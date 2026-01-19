@@ -1,65 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="12dp">
 
-    <!-- Kết quả scan -->
+    <!-- Kết quả -->
     <EditText
         android:id="@+id/edtResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Barcode / QR result"
-        android:inputType="text"
-        android:focusable="false" />
+        android:focusable="false"/>
 
-    <!-- Camera scan (chỉ chiếm 40% màn hình) -->
-    <androidx.camera.view.PreviewView
-        android:id="@+id/previewView"
+    <!-- Camera square -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:layout_marginTop="12dp"
-        android:background="#000000" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
 
-    <!-- Buttons -->
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:scaleType="fillCenter"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Khu vực nút -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="12dp"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnStart"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <Button
+                android:id="@+id/btnStart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="START" />
+
+            <Button
+                android:id="@+id/btnFlash"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="FLASH" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_weight="1"
-            android:text="START" />
+            android:layout_marginTop="8dp">
 
-        <View
-            android:layout_width="5dp"
-            android:layout_height="1dp" />
+            <Button
+                android:id="@+id/btnEnd"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="END" />
 
-        <Button
-            android:id="@+id/btnFlash"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:text="FLASH OFF" />
-
-        <View
-            android:layout_width="5dp"
-            android:layout_height="1dp" />
-
-        <Button
-            android:id="@+id/btnEnd"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:text="END" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="SETTING"/>
+        </LinearLayout>
 
     </LinearLayout>
-
-
+    
 </LinearLayout>
